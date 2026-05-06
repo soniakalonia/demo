@@ -7,11 +7,11 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/soniakalonia/demo.git'
-            }
-        }
+stage('Checkout') {
+    steps {
+        git branch: 'main', url: 'https://github.com/soniakalonia/demo.git'
+    }
+}
 
         stage('Install Yarn') {
             steps {
