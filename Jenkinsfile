@@ -10,12 +10,14 @@ pipeline {
         stage('Install Yarn') {
             steps {
                 bat 'npm install -g yarn'
+                bat 'yarn config set network-timeout 600000'
+                bat 'yarn config set registry https://registry.npmjs.org'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                bat 'yarn install'
+                bat 'yarn install --network-timeout 600000'
             }
         }
 
