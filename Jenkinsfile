@@ -7,22 +7,28 @@ pipeline {
 
     stages {
 
+        stage('Install Yarn') {
+            steps {
+                bat 'npm install -g yarn'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                bat 'yarn install'
             }
         }
 
         stage('Build React App') {
             steps {
-                bat 'npm run build'
+                bat 'yarn build'
             }
         }
 
         stage('Serve Build Locally') {
             steps {
                 bat 'npm install -g serve'
-                bat 'serve -s dist -l 3000'
+                bat 'serve -s apps/react-vite/dist -l 3000'
             }
         }
     }
