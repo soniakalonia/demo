@@ -26,12 +26,13 @@ stage('Checkout') {
                 bat 'yarn install --network-timeout 600000'
             }
         }
-
-        stage('Build App') {
-            steps {
-                bat 'yarn build'
-            }
+stage('Build App') {
+    steps {
+        dir('apps/react-vite') {
+            bat 'yarn build'
         }
+    }
+}
 
         stage('Run Locally') {
             steps {
