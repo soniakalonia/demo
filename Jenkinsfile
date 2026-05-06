@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/soniakalonia/demo.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
