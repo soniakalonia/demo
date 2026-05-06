@@ -2,10 +2,16 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'node18'
+        nodejs 'node20'
     }
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/soniakalonia/demo.git'
+            }
+        }
 
         stage('Install Yarn') {
             steps {
@@ -21,16 +27,15 @@ pipeline {
             }
         }
 
-        stage('Build React App') {
+        stage('Build App') {
             steps {
                 bat 'yarn build'
             }
         }
 
-        stage('Serve Build Locally') {
+        stage('Run Locally') {
             steps {
-                bat 'npm install -g serve'
-                bat 'serve -s apps/react-vite/dist -l 3000'
+                bat 'start /B yarn start'
             }
         }
     }
